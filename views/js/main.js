@@ -512,16 +512,29 @@ function updatePositions() {
   }
 }
 
-// runs updatePositions on scroll
-//window.addEventListener('scroll', updatePositions);
-window.addEventListener('scroll', function () {
-   requestAnimationFrame(updatePositions);
+
+//The following code is a modified version from source https://developer.mozilla.org/en-US/docs/Web/Events/scroll
+// runs updatePositions on scroll but after each frame has been completed
+var last_known_scroll_position = 0;
+var ticking = false;
+
+window.addEventListener('scroll', function(e) {
+  last_known_scroll_position = window.scrollY;
+  if (!ticking) {
+    window.requestAnimationFrame(function() {
+      updatePositions();
+      ticking = false;
+    });
+  }
+  ticking = true;
 });
+
 // Generates the sliding pizzas when the page loads.
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
   var elem;
+
   for (var i = 0; i < 56; i++) {
     elem = document.createElement('img');
     elem.className = 'mover';
