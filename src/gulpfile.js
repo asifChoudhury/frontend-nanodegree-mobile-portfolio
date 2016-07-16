@@ -4,7 +4,6 @@ var rename = require('gulp-rename');
 var cleanCSS = require('gulp-clean-css');
 var inlineCss = require('gulp-inline-css');
 var htmlmin = require('gulp-htmlmin');
-var put = require('gulp-put');
 
 gulp.task('scripts', function(){
     gulp.src('js_src/*.js')
@@ -15,7 +14,8 @@ gulp.task('scripts', function(){
     gulp.src('views/js_src/*.js')
         .pipe(uglify())
         .pipe(rename({suffix: '.min'}))
-        .pipe(gulp.dest('../build/views/js/'));
+        .pipe(gulp.dest('../build/views/js/'))
+        .pipe(gulp.dest('../dist/views/js/'));
 });
 
 gulp.task('clean-css', function() {
@@ -62,9 +62,4 @@ gulp.task('html-min', function() {
         .pipe(gulp.dest('../dist/views/'))
 });
 
-gulp.task('copy', function() {
-    gulp.src([ '../build/views/js/*'])
-        .pipe(put('../dist/views/js/'))
-})
-
-gulp.task('default', ['scripts', 'clean-css', 'inlineCss', 'html-min', 'copy']);
+gulp.task('default', ['scripts', 'clean-css', 'inlineCss', 'html-min']);

@@ -12,10 +12,13 @@
     "gulp": "^3.9.1",
     "gulp-clean": "^0.3.2",
     "gulp-clean-css": "^2.0.11",
+    "gulp-file-copy": "0.0.1",
     "gulp-htmlmin": "^2.0.0",
+    "gulp-imagemin": "^3.0.1",
     "gulp-inline-css": "^3.1.0",
     "gulp-put": "0.0.3",
     "gulp-rename": "^1.2.2",
-    "gulp-uglify": "^1.5.4"
+    "gulp-uglify": "^1.5.4",
+    "lossy-imagemin": "0.0.3"
   }
 }
