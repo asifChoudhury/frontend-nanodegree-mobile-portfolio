@@ -25,12 +25,14 @@ gulp.task('clean-css', function() {
         .pipe(cleanCSS({compatibility: 'ie8'}))
         .pipe(rename({suffix: '.min'}))
         .pipe(gulp.dest('../build/css/'))
+        .pipe(gulp.dest('../dist/css/'))
         .pipe(gulp.dest('../css/'));
 
     gulp.src('views/css_src/*.css')
         .pipe(cleanCSS({compatibility: 'ie8'}))
         .pipe(rename({suffix: '.min'}))
         .pipe(gulp.dest('../build/views/css/'))
+        .pipe(gulp.dest('../dist/views/css/'))
         .pipe(gulp.dest('../views/css/'));
 });
 
